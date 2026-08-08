@@ -1,10 +1,13 @@
 package br.com.rampageSneakers.demo.rampageSneakers.products;
 
-public class SneakersVariations {
+public class ProductVariation {
 
-    private long productId; 
     private long id;
+    private long productId;
+
     private String color;
+    private String size;
+    
     private int quantityInStock;
 
 }
