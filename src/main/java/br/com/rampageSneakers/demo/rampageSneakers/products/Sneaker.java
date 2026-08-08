@@ -7,9 +7,19 @@ public class Sneaker extends Product {
     private ShaftHeight shaftHeight; // Altura do cano
     private String material;
     private String suitableFor; // Indicado Para. Ex.: Corrida, dia á dia...
-    private String type;
+    private String type; //Casual, Coerida etc..
 
-    private enum ShaftHeight {
+    public Sneaker(String sole, SneakerClosing sneakerClosing, ShaftHeight shaftHeight, String material,
+            String suitableFor, String type) {
+        this.sole = sole;
+        this.sneakerClosing = sneakerClosing;
+        this.shaftHeight = shaftHeight;
+        this.material = material;
+        this.suitableFor = suitableFor;
+        this.type = type;
+    }
+
+    public enum ShaftHeight {
         LOW_PIPE, // Cano baixo
         MID_PIPE, // Cano médio
         HIGH_TOP // Cano alto
@@ -21,4 +31,15 @@ public class Sneaker extends Product {
         SLIP_ON, // Elastico
         ROTATING_CLASP // Fecho giratório
     }
+
+    @Override
+    public String toString() {
+        return "Sneaker [sole=" + sole + ", sneakerClosing=" + sneakerClosing + ", shaftHeight=" + shaftHeight
+                + ", material=" + material + ", suitableFor=" + suitableFor + ", type=" + type + "]";
+    }
+
+    
 }
+
+
+
