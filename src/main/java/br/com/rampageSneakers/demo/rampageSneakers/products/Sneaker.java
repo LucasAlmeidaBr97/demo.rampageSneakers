@@ -1,5 +1,8 @@
 package br.com.rampageSneakers.demo.rampageSneakers.products;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 public class Sneaker extends Product {
 
     private String sole; // sola
@@ -7,10 +10,12 @@ public class Sneaker extends Product {
     private ShaftHeight shaftHeight; // Altura do cano
     private String material;
     private String suitableFor; // Indicado Para. Ex.: Corrida, dia á dia...
-    private String type; //Casual, Coerida etc..
+    private String type; // Casual, Coerida etc..
 
-    public Sneaker(String sole, SneakerClosing sneakerClosing, ShaftHeight shaftHeight, String material,
-            String suitableFor, String type) {
+    public Sneaker(long id, String productName, String productDetails, BigDecimal productPrice, boolean status,
+            LocalDateTime createdAt, String brand, double avaliation, Gender gender, String sole,
+            SneakerClosing sneakerClosing, ShaftHeight shaftHeight, String material, String suitableFor, String type) {
+        super(id, productName, productDetails, productPrice, status, createdAt, brand, avaliation, gender);
         this.sole = sole;
         this.sneakerClosing = sneakerClosing;
         this.shaftHeight = shaftHeight;
@@ -34,12 +39,23 @@ public class Sneaker extends Product {
 
     @Override
     public String toString() {
-        return "Sneaker [sole=" + sole + ", sneakerClosing=" + sneakerClosing + ", shaftHeight=" + shaftHeight
-                + ", material=" + material + ", suitableFor=" + suitableFor + ", type=" + type + "]";
+        return "Sneaker {" +
+                "id=" + getId() +
+                ", productName='" + getProductName() + '\'' +
+                ", productDetails='" + getProductDetails() + '\'' +
+                ", productPrice=" + getProductPrice() +
+                ", status=" + isStatus() +
+                ", createdAt=" + getCreatedAt() +
+                ", brand='" + getBrand() + '\'' +
+                ", avaliation=" + getAvaliation() +
+                ", gender=" + getGender() +
+                ", sole='" + sole + '\'' +
+                ", sneakerClosing=" + sneakerClosing +
+                ", shaftHeight=" + shaftHeight +
+                ", material='" + material + '\'' +
+                ", suitableFor='" + suitableFor + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 
-    
 }
-
-
-
