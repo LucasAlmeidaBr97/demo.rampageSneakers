@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.rampageSneakers.demo.rampageSneakers.products.Gender;
+import br.com.rampageSneakers.demo.rampageSneakers.products.ProductVariation;
 import br.com.rampageSneakers.demo.rampageSneakers.products.Sneaker;
 import br.com.rampageSneakers.demo.rampageSneakers.products.Sneaker.ShaftHeight;
 import br.com.rampageSneakers.demo.rampageSneakers.products.Sneaker.SneakerClosing;
@@ -33,8 +34,13 @@ public class Application {
 				"Dia a dia",
 				"Casual");
 
-		System.out.println("OOOOOOI");
+		ProductVariation productVariation1 = new ProductVariation(1, sneaker1.getId(), "Vermelho e Branco", "44", 50);
+		ProductVariation productVariation2 = new ProductVariation(2, sneaker1.getId(), "Branco", "44", 50);
+		sneaker1.setVariation(productVariation1);
+		sneaker1.setVariation(productVariation2);
 		System.out.println(sneaker1);
+
+	
 	}
 
 }

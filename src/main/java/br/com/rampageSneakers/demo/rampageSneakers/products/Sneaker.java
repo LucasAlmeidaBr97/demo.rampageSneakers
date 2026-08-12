@@ -2,6 +2,8 @@ package br.com.rampageSneakers.demo.rampageSneakers.products;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Sneaker extends Product {
 
@@ -11,6 +13,7 @@ public class Sneaker extends Product {
     private String material;
     private String suitableFor; // Indicado Para. Ex.: Corrida, dia á dia...
     private String type; // Casual, Coerida etc..
+    private List<ProductVariation> productVariation;
 
     public Sneaker(long id, String productName, String productDetails, BigDecimal productPrice, boolean status,
             LocalDateTime createdAt, String brand, double avaliation, Gender gender, String sole,
@@ -22,6 +25,7 @@ public class Sneaker extends Product {
         this.material = material;
         this.suitableFor = suitableFor;
         this.type = type;
+        this.productVariation = new ArrayList<>();
     }
 
     public enum ShaftHeight {
@@ -37,25 +41,30 @@ public class Sneaker extends Product {
         ROTATING_CLASP // Fecho giratório
     }
 
+    public void setVariation(ProductVariation productVariation){
+        this.productVariation.add(productVariation);    
+    }
+
     @Override
     public String toString() {
-        return "Sneaker {" +
-                "id=" + getId() +
-                ", productName='" + getProductName() + '\'' +
-                ", productDetails='" + getProductDetails() + '\'' +
-                ", productPrice=" + getProductPrice() +
-                ", status=" + isStatus() +
-                ", createdAt=" + getCreatedAt() +
-                ", brand='" + getBrand() + '\'' +
-                ", avaliation=" + getAvaliation() +
-                ", gender=" + getGender() +
-                ", sole='" + sole + '\'' +
-                ", sneakerClosing=" + sneakerClosing +
-                ", shaftHeight=" + shaftHeight +
-                ", material='" + material + '\'' +
-                ", suitableFor='" + suitableFor + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+        return "Sneaker [" +
+                "Id: " + getId() +
+                " | Nome: '" + getProductName() + '\'' +
+                " | Detalhes: '" + getProductDetails() + '\'' +
+                " | Preço: " + getProductPrice() +
+                " | Status: " + isStatus() +
+                " | Data de Criação: " + getCreatedAt() +
+                " | Marca: '" + getBrand() + '\'' +
+                " | Avaliação: " + getAvaliation() +
+                " | Genêro: " + getGender() +
+                " | Tipo da Sola: '" + sole + '\'' +
+                " | Tipo do Fechamento: " + sneakerClosing +
+                " | Altura do Cano: " + shaftHeight +
+                " | Material: '" + material + '\'' +
+                " | Recomendado Para: '" + suitableFor + '\'' +
+                " | Tipo: '" + type + '\'' +
+                " | Variações: " + productVariation +
+                ']';
     }
 
 }
