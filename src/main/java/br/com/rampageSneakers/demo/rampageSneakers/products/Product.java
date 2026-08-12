@@ -2,6 +2,8 @@ package br.com.rampageSneakers.demo.rampageSneakers.products;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Product {
 
@@ -9,11 +11,12 @@ public abstract class Product {
     private String productName;
     private String productDetails;
     private BigDecimal productPrice;
-    private boolean status;
+    private boolean status; //Disponivel ou não na loja
     private LocalDateTime createdAt;
-    private String brand;
+    private String brand; // Marca
     private double avaliation;
     private Gender gender;
+    private List<ProductVariation> productVariation;
 
     public Product(long id, String productName, String productDetails, BigDecimal productPrice, boolean status,
             LocalDateTime createdAt, String brand, double avaliation, Gender gender) {
@@ -26,6 +29,7 @@ public abstract class Product {
         this.brand = brand;
         this.avaliation = avaliation;
         this.gender = gender;
+        this.productVariation = new ArrayList<>();
     }
 
     public long getId() {
@@ -98,6 +102,14 @@ public abstract class Product {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public void setVariation(ProductVariation productVariation){
+        this.productVariation.add(productVariation);    
+    }
+
+    public List<ProductVariation> getProductVariation() {
+        return productVariation;
     }
 
 }
