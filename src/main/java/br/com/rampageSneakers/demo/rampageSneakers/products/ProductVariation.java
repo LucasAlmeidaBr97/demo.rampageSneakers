@@ -20,8 +20,13 @@ public class ProductVariation {
 
     @Override
     public String toString() {
-        return "[Id: " + id + " | Id do Produto: " + productId + " | Cor: " + color + " | Tamanho: " + size
-                + " | Quantidade: " + quantityInStock + "]";
+        return "{\n" + 
+            "    \"Id\": " + id + ",\n" + 
+            "    \"Id do Produto\": " + productId + ",\n" + 
+            "    \"Cor\": \"" + color + "\",\n" + 
+            "    \"Tamanho\": " + size + ",\n" + 
+            "    \"Quantidade\": " + quantityInStock + "\n" + 
+            "  }";
     }
 
 }
