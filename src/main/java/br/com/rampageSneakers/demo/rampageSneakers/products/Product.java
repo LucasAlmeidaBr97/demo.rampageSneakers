@@ -5,111 +5,52 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@MappedSuperclass
+@NoArgsConstructor
+@Data
 public abstract class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
     private String productName;
     private String productDetails;
     private BigDecimal productPrice;
-    private boolean status; //Disponivel ou não na loja
+    private boolean status; // Disponivel ou não na loja
     private LocalDateTime createdAt;
     private String brand; // Marca
     private double avaliation;
+
+    //Enums
+    @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductVariation> productVariation;
 
-    public Product(long id, String productName, String productDetails, BigDecimal productPrice, boolean status,
-            LocalDateTime createdAt, String brand, double avaliation, Gender gender) {
-        this.id = id;
+    public Product(String productName, String productDetails, BigDecimal productPrice, boolean status,
+            String brand, double avaliation, Gender gender) {
         this.productName = productName;
         this.productDetails = productDetails;
         this.productPrice = productPrice;
         this.status = status;
-        this.createdAt = createdAt;
+        this.createdAt = LocalDateTime.now();
         this.brand = brand;
         this.avaliation = avaliation;
         this.gender = gender;
         this.productVariation = new ArrayList<>();
     }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductDetails() {
-        return productDetails;
-    }
-
-    public void setProductDetails(String productDetails) {
-        this.productDetails = productDetails;
-    }
-
-    public BigDecimal getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(BigDecimal productPrice) {
-        this.productPrice = productPrice;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public double getAvaliation() {
-        return avaliation;
-    }
-
-    public void setAvaliation(double avaliation) {
-        this.avaliation = avaliation;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public void setVariation(ProductVariation productVariation){
-        this.productVariation.add(productVariation);    
-    }
-
-    public List<ProductVariation> getProductVariation() {
-        return productVariation;
-    }
-
 }
