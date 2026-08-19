@@ -20,7 +20,7 @@ public class Sneaker extends Product {
     private String suitableFor; // Indicado Para. Ex.: Corrida, dia á dia...
     private String type; // Casual, Coerida etc..
 
-    //Enums
+    // Enums
     @Enumerated(EnumType.STRING)
     private SneakerClosing sneakerClosing; // Fechamento Ex.: Cardaço, Velcro...
     @Enumerated(EnumType.STRING)
@@ -29,7 +29,7 @@ public class Sneaker extends Product {
     public Sneaker(String productName, String productDetails, BigDecimal productPrice, boolean status,
             String brand, double avaliation, Gender gender, String sole,
             SneakerClosing sneakerClosing, ShaftHeight shaftHeight, String material, String suitableFor, String type) {
-        super(productName, productDetails, productPrice, status, brand, avaliation, gender);
+        super(productName, productDetails, productPrice, brand, gender);
         this.sole = sole;
         this.sneakerClosing = sneakerClosing;
         this.shaftHeight = shaftHeight;
