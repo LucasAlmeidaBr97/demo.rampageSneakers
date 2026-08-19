@@ -18,7 +18,6 @@ import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
@@ -28,7 +27,7 @@ public abstract class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
     private String productName;
     private String productDetails;
     private BigDecimal productPrice;
@@ -37,22 +36,22 @@ public abstract class Product {
     private String brand; // Marca
     private double avaliation;
 
-    //Enums
+    // Enums
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductVariation> productVariation;
 
-    public Product(String productName, String productDetails, BigDecimal productPrice, boolean status,
-            String brand, double avaliation, Gender gender) {
+    public Product(String productName, String productDetails, BigDecimal productPrice,
+            String brand, Gender gender) {
         this.productName = productName;
         this.productDetails = productDetails;
         this.productPrice = productPrice;
-        this.status = status;
+        this.status = false;
         this.createdAt = LocalDateTime.now();
         this.brand = brand;
-        this.avaliation = avaliation;
+        this.avaliation = 0.0;
         this.gender = gender;
         this.productVariation = new ArrayList<>();
     }
