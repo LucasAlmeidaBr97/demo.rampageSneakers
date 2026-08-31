@@ -26,29 +26,30 @@ public class Sneaker extends Product {
     @Enumerated(EnumType.STRING)
     private ShaftHeight shaftHeight; // Altura do cano
 
-    public Sneaker(String productName, String productDetails, BigDecimal productPrice, boolean status,
-            String brand, double avaliation, Gender gender, String sole,
-            SneakerClosing sneakerClosing, ShaftHeight shaftHeight, String material, String suitableFor, String type) {
-        super(productName, productDetails, productPrice, brand, gender);
+    public Sneaker(
+            String productName,
+            String productDetails,
+            BigDecimal productPrice,
+            String brand,
+            Gender gender,
+            String sole,
+            String material,
+            String suitableFor,
+            String type,
+            SneakerClosing sneakerClosing,
+            ShaftHeight shaftHeight) {
+        super(
+                productName,
+                productDetails,
+                productPrice,
+                brand,
+                gender);
         this.sole = sole;
         this.sneakerClosing = sneakerClosing;
         this.shaftHeight = shaftHeight;
         this.material = material;
         this.suitableFor = suitableFor;
         this.type = type;
-    }
-
-    public enum ShaftHeight {
-        LOW_PIPE, // Cano baixo
-        MID_PIPE, // Cano médio
-        HIGH_TOP // Cano alto
-    }
-
-    public enum SneakerClosing {
-        SHOELACE, // Cardaço
-        VELCRO, // Velcro
-        SLIP_ON, // Elastico
-        ROTATING_CLASP // Fecho giratório
     }
 
 }
