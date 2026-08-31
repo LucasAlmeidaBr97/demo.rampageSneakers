@@ -43,8 +43,12 @@ public abstract class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductVariation> productVariation;
 
-    public Product(String productName, String productDetails, BigDecimal productPrice,
-            String brand, Gender gender) {
+    public Product(
+            String productName,
+            String productDetails,
+            BigDecimal productPrice,
+            String brand,
+            Gender gender) {
         this.productName = productName;
         this.productDetails = productDetails;
         this.productPrice = productPrice;
