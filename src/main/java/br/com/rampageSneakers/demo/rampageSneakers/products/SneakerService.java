@@ -13,10 +13,31 @@ public class SneakerService {
 
     private final ModelMapper modelMapper;
 
-    public SneakerCreateRequestDTO createSneaker(SneakerCreateRequestDTO dto) {
+    public SneakerResponseDTO createSneaker(SneakerCreateRequestDTO dto) {
         Sneaker sneaker = modelMapper.map(dto, Sneaker.class);
-        sneakerRepository.save(sneaker);
-        return modelMapper.map(sneaker,SneakerCreateRequestDTO.class);
+        Sneaker savedSneaker = sneakerRepository.save(sneaker);
+
+        System.out.println("DTO: " + dto);
+        System.out.println("SNEAKER: " + sneaker);
+        return toResponseDTO(savedSneaker);
+    }
+
+    private SneakerResponseDTO toResponseDTO(Sneaker sneaker) {
+        return new SneakerResponseDTO(
+                sneaker.getId(),
+                sneaker.getProductName(),
+                sneaker.getProductDetails(),
+                sneaker.getProductPrice(),
+                sneaker.isStatus(),
+                sneaker.getBrand(),
+                sneaker.getAvaliation(),
+                sneaker.getGender(),
+                sneaker.getSole(),
+                sneaker.getMaterial(),
+                sneaker.getSuitableFor(),
+                sneaker.getType(),
+                sneaker.getSneakerClosing(),
+                sneaker.getShaftHeight());
     }
 
 }
