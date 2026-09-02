@@ -9,6 +9,8 @@ public class Configurations {
  
     @Bean
     public ModelMapper modelMapper() {
-        return new ModelMapper();
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.registerModule(new org.modelmapper.record.RecordModule());
+        return modelMapper;
     }
 }

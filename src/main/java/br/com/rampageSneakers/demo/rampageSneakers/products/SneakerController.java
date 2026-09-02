@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping(name = "/sneakers")
+@RequestMapping("/sneakers")
 @RequiredArgsConstructor
 public class SneakerController {
 
     private final SneakerService sneakerService;
 
-    @PostMapping("/")
+    @PostMapping
     public void register(@RequestBody SneakerCreateRequestDTO sneakerDTO) {
         sneakerService.createSneaker(sneakerDTO);
     }
