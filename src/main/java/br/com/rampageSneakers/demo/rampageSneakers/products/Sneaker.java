@@ -1,11 +1,10 @@
 package br.com.rampageSneakers.demo.rampageSneakers.products;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Sneakers")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Sneaker extends Product {
 
     private String sole; // sola
@@ -26,30 +26,6 @@ public class Sneaker extends Product {
     @Enumerated(EnumType.STRING)
     private ShaftHeight shaftHeight; // Altura do cano
 
-    public Sneaker(
-            String productName,
-            String productDetails,
-            BigDecimal productPrice,
-            String brand,
-            Gender gender,
-            String sole,
-            String material,
-            String suitableFor,
-            String type,
-            SneakerClosing sneakerClosing,
-            ShaftHeight shaftHeight) {
-        super(
-                productName,
-                productDetails,
-                productPrice,
-                brand,
-                gender);
-        this.sole = sole;
-        this.sneakerClosing = sneakerClosing;
-        this.shaftHeight = shaftHeight;
-        this.material = material;
-        this.suitableFor = suitableFor;
-        this.type = type;
-    }
+    
 
 }

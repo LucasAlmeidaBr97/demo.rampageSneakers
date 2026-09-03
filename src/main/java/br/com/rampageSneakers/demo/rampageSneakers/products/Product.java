@@ -2,7 +2,6 @@ package br.com.rampageSneakers.demo.rampageSneakers.products;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -15,12 +14,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public abstract class Product {
 
@@ -31,10 +32,10 @@ public abstract class Product {
     private String productName;
     private String productDetails;
     private BigDecimal productPrice;
-    private boolean status; // Disponivel ou não na loja
-    private LocalDateTime createdAt;
+    private boolean status = false; // Disponivel ou não na loja
+    private LocalDateTime createdAt = LocalDateTime.now();
     private String brand; // Marca
-    private double avaliation;
+    private double avaliation = 0.0;
 
     // Enums
     @Enumerated(EnumType.STRING)
@@ -43,20 +44,5 @@ public abstract class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductVariation> productVariation;
 
-    public Product(
-            String productName,
-            String productDetails,
-            BigDecimal productPrice,
-            String brand,
-            Gender gender) {
-        this.productName = productName;
-        this.productDetails = productDetails;
-        this.productPrice = productPrice;
-        this.status = false;
-        this.createdAt = LocalDateTime.now();
-        this.brand = brand;
-        this.avaliation = 0.0;
-        this.gender = gender;
-        this.productVariation = new ArrayList<>();
-    }
+    
 }
