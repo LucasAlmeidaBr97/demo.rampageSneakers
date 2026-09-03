@@ -16,6 +16,7 @@ public class SneakerController {
 
     @PostMapping
     public void register(@RequestBody SneakerCreateRequestDTO sneakerDTO) {
-        sneakerService.createSneaker(sneakerDTO);
+        System.out.println("NOVO PRODUTO CADASTRADO: " + sneakerService.createSneaker(sneakerDTO));
+        System.out.println("====================================================================");
     }
 }
